@@ -85,6 +85,7 @@ public class InteractiveFiction {
 				clock.increaseHour();
 				clock.increaseHour();
 				clock.hoursSpent+=2;
+				continue;
 			}
 			
 			// From here on out, what they typed better be a number!

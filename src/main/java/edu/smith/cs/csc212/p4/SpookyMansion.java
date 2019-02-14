@@ -50,13 +50,13 @@ public class SpookyMansion implements GameWorld {
 		attic.addExit(new Exit("entranceHall", "There are stairs leading down."));
 		attic.addExit(new Exit("attic2", "There is more through an archway"));
 
-		Place attic2 = insert(Place.create("attic2", "There's definitely a bat in here somewhere.\n"
-				+ "This part of the attic is brighter, so maybe you're safe here."));
+		Place attic2 = insert(ChangingPlace.create("attic2", "There's definitely a bat in here somewhere.\n"
+				+ "This part of the attic is brighter, so maybe you're safe here.", "It's dark, and you feel like the rustling is closer to you now.\n" + "It's cold up here, and you can here the wind whistling through the rafters."));
 		attic2.addExit(new Exit("attic", "There is more back through the archway"));
 		attic2.addExit(new Exit("attic3", "There is more through another archway"));
 		
 		Place attic3 = insert(ChangingPlace.create("attic3", "All you can see is bats.\n"
-				+ "It's still bright, but you wish it wasn't because of all the bats.", "It's dark in here, but you feel as though you're not alone." +
+				+ "It's still bright, but you wish it wasn't because of all the bats.", "It's even darker in here, but you feel as though you're not alone.\n" +
 				"You hope what you're hearing/smelling isn't bats."));
 		attic3.addExit(new Exit("attic2", "There is more back through the archway"));
 		

@@ -13,19 +13,19 @@ public class Place {
 	/**
 	 * This is a list of places we can get to from this place.
 	 */
-	private List<Exit> exits;
+	protected List<Exit> exits;
 	/**
 	 * This is the identifier of the place.
 	 */
-	private String id;
+	protected String id;
 	/**
 	 * What to tell the user about this place.
 	 */
-	private String description;
+	protected String description;
 	/**
 	 * Whether reaching this place ends the game.
 	 */
-	private boolean terminal;
+	protected boolean terminal;
 	
 	/**
 	 * Internal only constructor for Place. Use {@link #create(String, String)} or {@link #terminal(String, String)} instead.
