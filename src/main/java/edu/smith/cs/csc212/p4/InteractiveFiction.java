@@ -33,7 +33,7 @@ public class InteractiveFiction {
 			
 			// Print the description of where you are.
 			Place here = game.getPlace(place);
-			System.out.println(here.getDescription());
+			System.out.println(here.getDescription(clock));
 			
 			//Print time
 			System.out.println("The time is " + clock.getHour() + ":00.");
@@ -81,6 +81,11 @@ public class InteractiveFiction {
 				}
 					continue;
 				}
+			if (action.equals("rest")) {
+				clock.increaseHour();
+				clock.increaseHour();
+				clock.hoursSpent+=2;
+			}
 			
 			// From here on out, what they typed better be a number!
 			Integer exitNum = null;

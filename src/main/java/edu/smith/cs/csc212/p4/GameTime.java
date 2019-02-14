@@ -20,4 +20,12 @@ public class GameTime {
 			hour = 0;
 			}
 		}
+	public boolean isNightTime() {
+		if (hour > 21 || hour < 7) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

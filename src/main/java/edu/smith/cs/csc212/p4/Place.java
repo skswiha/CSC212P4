@@ -33,7 +33,7 @@ public class Place {
 	 * @param description - the user-facing description of the place.
 	 * @param terminal - whether this place ends the game.
 	 */
-	private Place(String id, String description, boolean terminal) {
+	protected Place(String id, String description, boolean terminal) {
 		this.id = id;
 		this.description = description;
 		this.exits = new ArrayList<>();
@@ -68,7 +68,7 @@ public class Place {
 	 * The narrative description of this place.
 	 * @return what we show to a player about this place.
 	 */
-	public String getDescription() {
+	public String getDescription(GameTime time) {
 		return this.description;
 	}
 
