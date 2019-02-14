@@ -23,14 +23,20 @@ public class InteractiveFiction {
 		// This is the current location of the player (initialize as start).
 		// Maybe we'll expand this to a Player object.
 		String place = game.getStart();
+		
+		GameTime clock = new GameTime();
+		
 
 		// Play the game until quitting.
 		// This is too hard to express here, so we just use an infinite loop with breaks.
 		while (true) {
+			
 			// Print the description of where you are.
 			Place here = game.getPlace(place);
 			System.out.println(here.getDescription());
-
+			
+			//Print time
+			System.out.println("The time is " + clock.getHour() + ":00.");
 			// Game over after print!
 			if (here.isTerminalState()) {
 				break;
@@ -40,10 +46,15 @@ public class InteractiveFiction {
 			List<Exit> exits = here.getVisibleExits();
 			
 			for (int i=0; i<exits.size(); i++) {
-			    Exit e = exits.get(i);
-				System.out.println(" ["+i+"] " + e.getDescription());
+				if(!(exits.get(i) instanceof SecretExit)) {
+					Exit e = exits.get(i);
+					System.out.println(" ["+i+"] " + e.getDescription());
+				}
+				else if (!((SecretExit) exits.get(i)).getHidden()) {
+					Exit e = exits.get(i);
+					System.out.println(" ["+i+"] " + e.getDescription());
+					}
 			}
-
 			// Figure out what the user wants to do, for now, only "quit" is special.
 			List<String> words = input.getUserWords(">");
 			if (words.size() == 0) {
@@ -57,13 +68,19 @@ public class InteractiveFiction {
 			// Get the word they typed as lowercase, and no spaces.
 			String action = words.get(0).toLowerCase().trim();
 			
-			if (action.equals("quit")) {
+			if (action.equals("quit") || action.equals("q") || action.equals("escape")) {
 				if (input.confirm("Are you sure you want to quit?")) {
 					break;
 				} else {
 					continue;
 				}
 			}
+			if (action.equals("search")) {
+				for (Exit e : exits) {
+					e.search();
+				}
+					continue;
+				}
 			
 			// From here on out, what they typed better be a number!
 			Integer exitNum = null;
@@ -82,10 +99,13 @@ public class InteractiveFiction {
 			// Move to the room they indicated.
 			Exit destination = exits.get(exitNum);
 			place = destination.getTarget();
+			clock.increaseHour();
+			clock.hoursSpent++;
 		}
 
 		// You get here by "quit" or by reaching a Terminal Place.
-		System.out.println(">>> GAME OVER <<<");
+		System.out.println(">>> GAME OVER <<<\nYou spent " + clock.hoursSpent + " hours in the house.");
 	}
 
 }
+	

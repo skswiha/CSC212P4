@@ -76,4 +76,19 @@ public class Exit {
 		}
 		return false;
 	}
+	
+	public boolean isSecret() {
+		if(this instanceof SecretExit) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void search() {
+		if(this instanceof SecretExit) {
+			((SecretExit)this).reveal();
+		}
+	}
 }
