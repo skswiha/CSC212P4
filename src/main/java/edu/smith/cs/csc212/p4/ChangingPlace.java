@@ -3,11 +3,11 @@ package edu.smith.cs.csc212.p4;
 public class ChangingPlace extends Place {
 	/*
 	 * The description of the place that will be printed at night
-	 * */
+	 */
 	private String nightDescription;
 	/*
 	 * Uses the super constructor of Place and initializes nightDescription to create a ChangingPlace object
-	 * */
+	 */
 	private ChangingPlace(String id, String description, String nightDescription, boolean terminal){
 		super(id, description, terminal);
 		this.nightDescription = nightDescription;

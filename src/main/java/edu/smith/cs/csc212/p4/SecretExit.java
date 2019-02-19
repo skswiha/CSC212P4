@@ -19,14 +19,14 @@ public class SecretExit extends Exit {
 	
 	/**
 	 *@return the value of the private variable hidden, so other classes can access it 
-	 **/
+	 */
 	public boolean getHidden() {
 		return hidden;
 	}
 	
 	/*
 	 * Reveals the exit by setting its hidden value to false
-	 * */
+	 */
 	public void reveal() {
 		hidden = false;
 	}
