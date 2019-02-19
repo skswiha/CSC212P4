@@ -75,6 +75,7 @@ public class InteractiveFiction {
 			// Get the word they typed as lowercase, and no spaces.
 			String action = words.get(0).toLowerCase().trim();
 			
+			//Quit the game if the user enters "quit", "q", or "escape"
 			if (action.equals("quit") || action.equals("q") || action.equals("escape")) {
 				if (input.confirm("Are you sure you want to quit?")) {
 					break;
@@ -82,12 +83,14 @@ public class InteractiveFiction {
 					continue;
 				}
 			}
+			//Search for SecretExits if the user enters "search"
 			if (action.equals("search")) {
 				for (Exit e : exits) {
 					e.search();
 				}
 					continue;
 				}
+			//Skip forward two hours if the user enters "rest"
 			if (action.equals("rest")) {
 				clock.increaseHour();
 				clock.increaseHour();
