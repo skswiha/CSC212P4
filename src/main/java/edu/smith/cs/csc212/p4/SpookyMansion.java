@@ -31,12 +31,13 @@ public class SpookyMansion implements GameWorld {
 		entranceHall.addExit(new Exit("kitchen", "There is a red door."));
 		
 		Place basement = insert(
-				Place.create("basement", "You have found the basement of the mansion.\n" + 
-		                           "It is darker down here.\n" +
-						"You can barely see across the small room."
+				ChangingPlace.create("basement", "You have found the basement of the mansion.\n" + 
+		                           "It is extremely dark down here.",
+		                           "It is extremely dark, but it's also night, so your eyes are used to this kind of darkness.\n" + 
+		                           "You can just make out the other side of the room"
 						));
 		basement.addExit(new Exit("entranceHall", "There are stairs leading up."));
-		basement.addExit(new Exit("basement2", "There is a door."));
+		basement.addExit(new NightExit("basement2", "There is a door."));
 		
 		Place basement2 = insert(
 				Place.create("basement2", "This part of the basement is even darker.\n" + 
@@ -54,11 +55,15 @@ public class SpookyMansion implements GameWorld {
 				+ "This part of the attic is brighter, so maybe you're safe here.", "It's dark, and you feel like the rustling is closer to you now.\n" + "It's cold up here, and you can here the wind whistling through the rafters."));
 		attic2.addExit(new Exit("attic", "There is more back through the archway"));
 		attic2.addExit(new Exit("attic3", "There is more through another archway"));
-		
+	
 		Place attic3 = insert(ChangingPlace.create("attic3", "All you can see is bats.\n"
 				+ "It's still bright, but you wish it wasn't because of all the bats.", "It's even darker in here, but you feel as though you're not alone.\n" +
 				"You hope what you're hearing/smelling isn't bats."));
 		attic3.addExit(new Exit("attic2", "There is more back through the archway"));
+		attic3.addExit(new DayExit("attic4", "There is more through another archway"));
+		
+		Place attic4 = insert(Place.create("attic4", "A bat attacks you.\n" + "You should probably run."));
+		attic4.addExit(new Exit("attic2", "There is more back through the archway"));
 		
 		Place kitchen = insert(Place.create("kitchen", "You've found the kitchen. You smell old food and some kind of animal."));
 		kitchen.addExit(new Exit("entranceHall", "There is a red door."));

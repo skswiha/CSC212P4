@@ -1,8 +1,5 @@
 package edu.smith.cs.csc212.p4;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ChangingPlace extends Place {
 	
 	private String nightDescription;

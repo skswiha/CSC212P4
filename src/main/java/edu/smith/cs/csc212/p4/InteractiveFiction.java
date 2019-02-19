@@ -26,6 +26,7 @@ public class InteractiveFiction {
 		
 		GameTime clock = new GameTime();
 		
+		
 
 		// Play the game until quitting.
 		// This is too hard to express here, so we just use an infinite loop with breaks.
@@ -46,6 +47,12 @@ public class InteractiveFiction {
 			List<Exit> exits = here.getVisibleExits();
 			
 			for (int i=0; i<exits.size(); i++) {
+				if(exits.get(i) instanceof DayExit) {
+					((DayExit) exits.get(i)).checkTime(clock);
+				}
+				if(exits.get(i) instanceof NightExit) {
+					((NightExit) exits.get(i)).checkTime(clock);
+				}
 				if(!(exits.get(i) instanceof SecretExit)) {
 					Exit e = exits.get(i);
 					System.out.println(" ["+i+"] " + e.getDescription());
